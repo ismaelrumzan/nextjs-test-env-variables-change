@@ -1,7 +1,15 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export async function getStaticProps() {
+  let test = process.env.testvar;
+  return {
+    props: { testvar: test }, // will be passed to the page component as props
+  }
+}
+
+export default function Home(props) {
+  console.log(props);
   return (
     <div className={styles.container}>
       <Head>
